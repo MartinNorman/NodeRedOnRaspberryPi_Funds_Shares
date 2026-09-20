@@ -963,16 +963,6 @@
         "debugEnabled": false
     },
     {
-        "id": "c372d1f8917e6b10",
-        "type": "MySQLdatabase",
-        "name": "Energy_Postgres",
-        "host": "192.168.50.60",
-        "port": "5433",
-        "db": "Energy",
-        "tz": "",
-        "charset": "UTF8"
-    },
-    {
         "id": "e1a454ab75f8638a",
         "type": "ui_base",
         "theme": {
@@ -6003,8 +5993,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1440,
-        "y": 760,
+        "x": 1400,
+        "y": 620,
         "wires": []
     },
     {
