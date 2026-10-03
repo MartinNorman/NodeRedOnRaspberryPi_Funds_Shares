@@ -1105,6 +1105,31 @@
         "passwordEnv": ""
     },
     {
+        "id": "56d99ff966d0811b",
+        "type": "postgreSQLConfig",
+        "name": "Energy",
+        "host": "192.168.50.60",
+        "hostFieldType": "str",
+        "port": "5433",
+        "portFieldType": "num",
+        "database": "Energy",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "userFieldType": "cred",
+        "userEnv": "",
+        "passwordFieldType": "cred",
+        "passwordEnv": ""
+    },
+    {
         "id": "7a923bdec56516c7",
         "type": "inject",
         "z": "e6e24a9ec0db5bf1",
@@ -1777,6 +1802,7 @@
         "id": "5570f1fadfc6a001",
         "type": "mysql",
         "z": "e6e24a9ec0db5bf1",
+        "d": true,
         "mydb": "e19ee8ae7823f368",
         "name": "Store General",
         "x": 800,
@@ -1824,6 +1850,7 @@
         "id": "1f16b6699ca4d76b",
         "type": "mysql",
         "z": "e6e24a9ec0db5bf1",
+        "d": true,
         "mydb": "e19ee8ae7823f368",
         "name": "Store Dividend",
         "x": 1120,
@@ -1852,6 +1879,7 @@
         "id": "8d7fd2674add10a6",
         "type": "mysql",
         "z": "e6e24a9ec0db5bf1",
+        "d": true,
         "mydb": "e19ee8ae7823f368",
         "name": "Store Development",
         "x": 810,
@@ -1880,6 +1908,7 @@
         "id": "cad088eecb5f4089",
         "type": "mysql",
         "z": "e6e24a9ec0db5bf1",
+        "d": true,
         "mydb": "e19ee8ae7823f368",
         "name": "Store Sector",
         "x": 1090,
@@ -1983,6 +2012,7 @@
         "id": "977db743e9bf031e",
         "type": "mysql",
         "z": "e6e24a9ec0db5bf1",
+        "d": true,
         "mydb": "e19ee8ae7823f368",
         "name": "Store Runs",
         "x": 1070,
@@ -2199,7 +2229,6 @@
         "y": 80,
         "wires": [
             [
-                "4b7e2842650dd675",
                 "ba911b208779e5f2"
             ],
             [
@@ -2386,7 +2415,7 @@
         "type": "function",
         "z": "b6b3133e4b13c3d6",
         "name": "Prepare",
-        "func": "//var next = flow.get('next');\nvar csrf = flow.get('csrf');\n//limit=50\nmsg.method = \"GET\"\nmsg.url = \"https://www.nordnet.se/api/2/instrument_search/query/fundlist?sortField=name&sortOrder=ascending&limit=100&offset=\" + (msg.loop.value * 50);\nmsg.headers = {};\nmsg.headers['Accept'] = 'application/json';\nmsg.headers['Accept-Language'] = 'en-US,en;q=0.9,sv;q=0.8,da;q=0.7';\nmsg.headers['client-id'] = 'NEXT';\nmsg.headers['ntag'] = 'NO_NTAG_RECEIVED_YET';\nmsg.headers['sec-fetch-dest'] = 'empth';\nmsg.headers['sec-fetch-mode'] = 'cors';\nmsg.headers['sec-fetch-site'] = 'same-origin';\nmsg.headers['x-nn-href'] = 'https://www.nordnet.se/marknaden/fondlistor?sortField=name&sortOrder=ascending&selectedTab=overview&page=' + msg.loop.value;\nmsg.headers['cookie'] = 'nntheme=%7B%22a11y%22%3Afalse%2C%22dark%22%3A%22AUTO%22%2C%22osPref%22%3A%22LIGHT%22%7D; cookie_consent=analytics%2Cfunctional%2Cmarketing%2Cnecessary; nnanon=f2e211be878e5655393f55637da32cd1211bcc0f1f26082a2582b267763a90db; nntheme=%7B%22a11y%22%3Afalse%2C%22dark%22%3A%22AUTO%22%2C%22osPref%22%3A%22LIGHT%22%7D; INSTRUMENT_PAGE_SETTINGS=%7B%22corporateActionsSelectedAgenda%22%3A%5B%22historical%22%5D%2C%22corporateActionsSelectedTab%22%3A%5B1%5D%2C%22selectedNewsTab%22%3A%5B0%5D%7D; lang=sv; _csrf='+ csrf +'; _gid=GA1.2.726677456.1716142414; _gat_UA-58430789-7=1; ga_session_id=1716142414; _ga=GA1.2.1481848309.1716050088; _ga_KLPJKZ7680=GS1.1.1716142414.2.1.1716142464.0.0.220424373';\nmsg.referrer = 'https://www.nordnet.se';\nmsg.referrerPolicy = 'origin';\nmsg.body = null;\nmsg.mode = 'cors';\n\nreturn msg;\n\n\n//msg.headers['cookie'] = 'lang=sv; csrf=' + csrf + ';_ga=GA1.2.2043169788.1522314173; accepted_cookies=1; coid=1073550482; sv-uts=\\'NTI1YWIzMDAtOGMzMi0xMWU5LWE5OWMtMDA1MDU2YjcwMGI1IzUjMTU2NjQ5NjQwNjYyMg==\\'; nnanon=0d304650-13b4-11ea-b542-23a41990b521; __qca=P0-29952391-1594118770307; nntheme=a11y; _gid=GA1.2.1217256637.1595067687; JSESSIONID=FC85B924EA9BC8B4172A7D7B0AB6A768; webapp-cmse-next=!Bz/qAoh4PAVWfM6/H48idC6JYNNOng3mcN7fKRfCKlfex8XalKNCAx5siZ1VCzcX5UB2QezxYqf6rqnZdGoYFPrQ8Y2Ix160yo2gS3B3MA==; _csrf=zuSi6ub4HT_F_2Sy9OMVvJGD; NEXT=5938adbbf4069248352b7af24167e5c7bf44fdcc; ga_session_id=1716050087; _gat_UA-58430789-7=1';",
+        "func": "//var next = flow.get('next');\nvar csrf = flow.get('csrf');\n//limit=50\nmsg.method = \"GET\"\nmsg.url = \"https://www.nordnet.se/api/2/instrument_search/query/fundlist?sortField=name&sortOrder=ascending&limit=50&offset=\" + (msg.loop.value * 50); ///100\nmsg.headers = {};\nmsg.headers['Accept'] = 'application/json';\nmsg.headers['Accept-Language'] = 'en-US,en;q=0.9,sv;q=0.8,da;q=0.7';\nmsg.headers['client-id'] = 'NEXT';\nmsg.headers['ntag'] = 'NO_NTAG_RECEIVED_YET';\nmsg.headers['sec-fetch-dest'] = 'empth';\nmsg.headers['sec-fetch-mode'] = 'cors';\nmsg.headers['sec-fetch-site'] = 'same-origin';\nmsg.headers['x-nn-href'] = 'https://www.nordnet.se/marknaden/fondlistor?sortField=name&sortOrder=ascending&selectedTab=overview&page=' + msg.loop.value;\nmsg.headers['cookie'] = 'nntheme=%7B%22a11y%22%3Afalse%2C%22dark%22%3A%22AUTO%22%2C%22osPref%22%3A%22LIGHT%22%7D; cookie_consent=analytics%2Cfunctional%2Cmarketing%2Cnecessary; nnanon=f2e211be878e5655393f55637da32cd1211bcc0f1f26082a2582b267763a90db; nntheme=%7B%22a11y%22%3Afalse%2C%22dark%22%3A%22AUTO%22%2C%22osPref%22%3A%22LIGHT%22%7D; INSTRUMENT_PAGE_SETTINGS=%7B%22corporateActionsSelectedAgenda%22%3A%5B%22historical%22%5D%2C%22corporateActionsSelectedTab%22%3A%5B1%5D%2C%22selectedNewsTab%22%3A%5B0%5D%7D; lang=sv; _csrf='+ csrf +'; _gid=GA1.2.726677456.1716142414; _gat_UA-58430789-7=1; ga_session_id=1716142414; _ga=GA1.2.1481848309.1716050088; _ga_KLPJKZ7680=GS1.1.1716142414.2.1.1716142464.0.0.220424373';\nmsg.referrer = 'https://www.nordnet.se';\nmsg.referrerPolicy = 'origin';\nmsg.body = null;\nmsg.mode = 'cors';\n\nreturn msg;\n\n\n//msg.headers['cookie'] = 'lang=sv; csrf=' + csrf + ';_ga=GA1.2.2043169788.1522314173; accepted_cookies=1; coid=1073550482; sv-uts=\\'NTI1YWIzMDAtOGMzMi0xMWU5LWE5OWMtMDA1MDU2YjcwMGI1IzUjMTU2NjQ5NjQwNjYyMg==\\'; nnanon=0d304650-13b4-11ea-b542-23a41990b521; __qca=P0-29952391-1594118770307; nntheme=a11y; _gid=GA1.2.1217256637.1595067687; JSESSIONID=FC85B924EA9BC8B4172A7D7B0AB6A768; webapp-cmse-next=!Bz/qAoh4PAVWfM6/H48idC6JYNNOng3mcN7fKRfCKlfex8XalKNCAx5siZ1VCzcX5UB2QezxYqf6rqnZdGoYFPrQ8Y2Ix160yo2gS3B3MA==; _csrf=zuSi6ub4HT_F_2Sy9OMVvJGD; NEXT=5938adbbf4069248352b7af24167e5c7bf44fdcc; ga_session_id=1716050087; _gat_UA-58430789-7=1';",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2441,7 +2470,6 @@
         "y": 580,
         "wires": [
             [
-                "cdcfaa4deac75f42",
                 "25b0187f98302e26"
             ],
             [
@@ -2642,8 +2670,7 @@
         "y": 780,
         "wires": [
             [
-                "9d8ce7a8017a2985",
-                "14b45f9176264fed"
+                "9d8ce7a8017a2985"
             ]
         ]
     },
@@ -2681,6 +2708,7 @@
         "id": "21c85ac15f9e87d4",
         "type": "mysql",
         "z": "b6b3133e4b13c3d6",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store General",
         "x": 760,
@@ -2713,7 +2741,7 @@
         "query": "INSERT INTO \nDevelopment (source, id, 1d, 1w, 1m, 3m, created, 2w ) \nVALUES ('Nordnet', ?, ?, ?, ?, ?, ?, ?);\n",
         "vars": "development[0],development[1],development[2],development[3],development[4],development[5],development[6]",
         "outField": "topic",
-        "x": 970,
+        "x": 1050,
         "y": 780,
         "wires": [
             [
@@ -2725,9 +2753,10 @@
         "id": "d7e20a5f71b712ed",
         "type": "mysql",
         "z": "b6b3133e4b13c3d6",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store Development",
-        "x": 1170,
+        "x": 1250,
         "y": 780,
         "wires": [
             []
@@ -2842,8 +2871,7 @@
         "y": 1260,
         "wires": [
             [
-                "2973a0ebcfb263db",
-                "0cefbca32ed13b50"
+                "2973a0ebcfb263db"
             ]
         ]
     },
@@ -2867,6 +2895,7 @@
         "id": "683c5799b7d58e65",
         "type": "mysql",
         "z": "b6b3133e4b13c3d6",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store Index fund",
         "x": 740,
@@ -3131,6 +3160,7 @@
         "id": "5e36ac21b838edd5",
         "type": "mysql",
         "z": "b6b3133e4b13c3d6",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store Runs",
         "x": 950,
@@ -3169,8 +3199,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 860,
-        "y": 900,
+        "x": 780,
+        "y": 720,
         "wires": []
     },
     {
@@ -3186,8 +3216,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1000,
-        "y": 640,
+        "x": 920,
+        "y": 700,
         "wires": []
     },
     {
@@ -3283,8 +3313,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1200,
-        "y": 940,
+        "x": 1240,
+        "y": 900,
         "wires": []
     },
     {
@@ -3400,7 +3430,7 @@
         "type": "function",
         "z": "b6b3133e4b13c3d6",
         "name": "Store development",
-        "func": "delete msg.topic;\n\nmsg.params = [\n    msg.development[0],\n    msg.development[1],\n    msg.development[2],\n    msg.development[3],\n    msg.development[4],\n    msg.development[5],\n    msg.development[7]\n];\nreturn msg;\n",
+        "func": "delete msg.topic;\n\nmsg.params = [\n    msg.development[0],\n    msg.development[1],\n    msg.development[2],\n    msg.development[3],\n    msg.development[4],\n    msg.development[5],\n    msg.development[6]\n];\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3519,8 +3549,7 @@
         "y": 100,
         "wires": [
             [
-                "76e9d5805c0f9ab9",
-                "ecc577ccf11ea70e"
+                "76e9d5805c0f9ab9"
             ],
             [
                 "52906dd104d25dba"
@@ -3687,8 +3716,7 @@
         "y": 580,
         "wires": [
             [
-                "e47489b768daaf55",
-                "80ae97fb0e3cb8df"
+                "e47489b768daaf55"
             ],
             [
                 "0629355dcc7e5246"
@@ -3887,8 +3915,7 @@
         "y": 800,
         "wires": [
             [
-                "a34823b6c5740889",
-                "87d64201125cfce4"
+                "a34823b6c5740889"
             ]
         ]
     },
@@ -3943,6 +3970,7 @@
         "id": "1c14bae61a1e5f88",
         "type": "mysql",
         "z": "94e6a2d5fcdd6bfd",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store General",
         "x": 860,
@@ -3971,6 +3999,7 @@
         "id": "42f4fd9f2c6b2078",
         "type": "mysql",
         "z": "94e6a2d5fcdd6bfd",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store Development",
         "x": 1190,
@@ -3987,7 +4016,7 @@
         "query": "INSERT INTO \nDevelopment (source, id, 1d, 1w, 2w, 1m, 3m, created) \nVALUES ('Avanza', ?, ?, ?, ?, ?, ?, ?);\n",
         "vars": "development[0],development[1],development[2],development[6],development[3],development[4],development[5]",
         "outField": "topic",
-        "x": 990,
+        "x": 1010,
         "y": 800,
         "wires": [
             [
@@ -4015,6 +4044,7 @@
         "id": "65b6f9d03fe6ee62",
         "type": "mysql",
         "z": "94e6a2d5fcdd6bfd",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store Index fund",
         "x": 860,
@@ -4207,8 +4237,7 @@
         "y": 1400,
         "wires": [
             [
-                "508f34c9f6f8c2dc",
-                "fa730f4a0ae3f1d9"
+                "508f34c9f6f8c2dc"
             ]
         ]
     },
@@ -4374,6 +4403,7 @@
         "id": "9eaece6ae40fe8e6",
         "type": "mysql",
         "z": "94e6a2d5fcdd6bfd",
+        "d": true,
         "mydb": "c09f346ae50d8da3",
         "name": "Store Runs",
         "x": 930,
@@ -4422,8 +4452,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 900,
-        "y": 1620,
+        "x": 1260,
+        "y": 1000,
         "wires": []
     },
     {
@@ -4439,8 +4469,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 1620,
+        "x": 900,
+        "y": 960,
         "wires": []
     },
     {
@@ -4594,7 +4624,7 @@
         "type": "function",
         "z": "94e6a2d5fcdd6bfd",
         "name": "Store development",
-        "func": "delete msg.topic;\n\nmsg.params = [\n    msg.development[0],\n    msg.development[1],\n    msg.development[2],\n    msg.development[3],\n    msg.development[4],\n    msg.development[5],\n    msg.development[7]\n];\nreturn msg;\n",
+        "func": "delete msg.topic;\n\nmsg.params = [\n    msg.development[0],\n    msg.development[1],\n    msg.development[2],\n    msg.development[3],\n    msg.development[4],\n    msg.development[5],\n    msg.development[6]\n];\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -5410,6 +5440,7 @@
         "id": "f2ea5fc4afc19fa9",
         "type": "mysql",
         "z": "4c45fbaa267a11c0",
+        "d": true,
         "g": "8090e6504dd0e3a7",
         "mydb": "75b0f60ff288d123",
         "name": "Store Prices",
@@ -5503,6 +5534,7 @@
         "id": "94b1c5c4bb9814ca",
         "type": "mysql",
         "z": "4c45fbaa267a11c0",
+        "d": true,
         "g": "48f52d696358c680",
         "mydb": "75b0f60ff288d123",
         "name": "Store Consumption",
@@ -5587,6 +5619,7 @@
         "id": "e3793f2019af140a",
         "type": "mysql",
         "z": "4c45fbaa267a11c0",
+        "d": true,
         "g": "673183c43492b0fc",
         "mydb": "75b0f60ff288d123",
         "name": "",
@@ -5739,6 +5772,7 @@
         "id": "a3edb55644f63203",
         "type": "mysql",
         "z": "4c45fbaa267a11c0",
+        "d": true,
         "g": "673183c43492b0fc",
         "mydb": "75b0f60ff288d123",
         "name": "",
@@ -5771,6 +5805,7 @@
         "id": "a3615f23a889d723",
         "type": "mysql",
         "z": "4c45fbaa267a11c0",
+        "d": true,
         "g": "673183c43492b0fc",
         "mydb": "75b0f60ff288d123",
         "name": "",
@@ -5922,6 +5957,7 @@
         "id": "1ee4b19ea64062d0",
         "type": "mysql",
         "z": "4c45fbaa267a11c0",
+        "d": true,
         "g": "d7b9f5094a622e23",
         "mydb": "75b0f60ff288d123",
         "name": "Store Prices",
@@ -6003,15 +6039,17 @@
         "z": "4c45fbaa267a11c0",
         "g": "d7b9f5094a622e23",
         "name": "",
-        "query": "INSERT INTO price_15_min (timestamp, date, hour, minute, price, timestamp_original_format)\nVALUES ($1, $2, $3, $4, $5, $6);",
-        "postgreSQLConfig": "aa83cde8b6535e99",
+        "query": "INSERT INTO public.price_15_min (timestamp, date, hour, minute, price, timestamp_original_format)\nVALUES ($1, $2, $3, $4, $5, $6);",
+        "postgreSQLConfig": "56d99ff966d0811b",
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
         "x": 1210,
         "y": 840,
         "wires": [
-            []
+            [
+                "54fc894cc2de4169"
+            ]
         ]
     },
     {
@@ -6743,6 +6781,7 @@
         "id": "45eb2b00a7609dea",
         "type": "mysql",
         "z": "2ba41f293f95dbc1",
+        "d": true,
         "mydb": "9576e233f098b56f",
         "name": "Store data",
         "x": 290,
@@ -6820,6 +6859,7 @@
         "id": "b5fefd36218d5903",
         "type": "mysql",
         "z": "2ba41f293f95dbc1",
+        "d": true,
         "mydb": "9576e233f098b56f",
         "name": "Delete",
         "x": 530,
@@ -6907,6 +6947,7 @@
         "id": "347ead569482f38f",
         "type": "mysql",
         "z": "2ba41f293f95dbc1",
+        "d": true,
         "mydb": "9576e233f098b56f",
         "name": "Get data",
         "x": 460,
@@ -7059,6 +7100,7 @@
         "id": "2687a310a2c45be2",
         "type": "mysql",
         "z": "2ba41f293f95dbc1",
+        "d": true,
         "mydb": "9576e233f098b56f",
         "name": "Store data",
         "x": 850,
@@ -7089,6 +7131,7 @@
         "id": "76434beae8e07426",
         "type": "mysql",
         "z": "2ba41f293f95dbc1",
+        "d": true,
         "mydb": "9576e233f098b56f",
         "name": "Delete",
         "x": 490,
@@ -7376,6 +7419,7 @@
         "id": "ba34bc7dbfda556d",
         "type": "mysql",
         "z": "2ba41f293f95dbc1",
+        "d": true,
         "mydb": "9576e233f098b56f",
         "name": "Store data",
         "x": 610,
@@ -7490,6 +7534,7 @@
         "id": "9be3bc94f0701627",
         "type": "mysql",
         "z": "2ba41f293f95dbc1",
+        "d": true,
         "mydb": "9576e233f098b56f",
         "name": "Delete",
         "x": 570,
@@ -12043,6 +12088,7 @@
         "id": "173e78dd75f445ee",
         "type": "mysql",
         "z": "9c4e07f6c374880d",
+        "d": true,
         "mydb": "0872b712e1469407",
         "name": "Store General",
         "x": 760,
